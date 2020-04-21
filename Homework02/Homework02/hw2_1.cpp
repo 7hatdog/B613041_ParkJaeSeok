@@ -21,7 +21,7 @@ int main() {
     // 4. 위치 지정자를 다시 처음으로 초기화한다
     input.seekg(0, ios::beg);
 
-    // 5. 파일의 (전체)내용을 str에 읽는다
+    // 5. 파일의 전체 내용을 str에 읽는다
     input.read(&str[0], size);
     input.close(); // 파일 닫기
 
