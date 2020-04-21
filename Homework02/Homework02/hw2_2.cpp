@@ -32,8 +32,8 @@ void coutSum(string fName) {
 					n = n * 10 + (num[i][j] - '0');
 					/*
 						i\j  0  1	
-						 0	 1	4
-						 1	 5	5
+						 0   1	4
+						 1   5	5
 					*/
 				}
 				sum += n;
