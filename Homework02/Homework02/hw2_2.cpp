@@ -12,7 +12,7 @@ void coutSum(string fName) {
 		string line;
 		
 		while (getline(input, line)) {
-			int cnt = 0, sum = 0;		// cnt가 0일 때는 해당 줄의 1번째 수, 1일 때는 2번째 수
+			int cnt = 0, sum = 0;		// cnt가 0일 때는 해당 줄의 1번째 수, 1일 때는 2번째 수를 의미한다
 			string num[2] = { "", "" };	// num[0]에는 해당 줄의 1번째 수가, num[1]에는 2번째 수가 저장된다
 
 			for (int i = 0; i < line.length(); i++) {
