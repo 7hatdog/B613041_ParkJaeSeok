@@ -1,4 +1,4 @@
-// 2. test.txt의 한 줄에 있는 두 수를 읽어 그 합을 출력하는 함수를 구현하시오.
+// 2. test2_2.txt의 한 줄에 있는 두 수를 읽어 그 합을 출력하는 함수를 구현하시오.
 
 #include <iostream>
 #include <fstream>
