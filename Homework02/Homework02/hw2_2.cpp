@@ -1,5 +1,4 @@
-// 2. test.txtÀÇ ÇÑ ÁÙ¿¡ ÀÖ´Â µÎ ¼ö¸¦ ÀĞ¾î ±× ÇÕÀ» Ãâ·ÂÇÏ´Â ÇÔ¼ö¸¦ ±¸ÇöÇÏ½Ã¿À.
-// 2. Read the two numbers on one line of test.txt to implement the function to output the sum
+// 2. test.txtì˜ í•œ ì¤„ì— ìˆëŠ” ë‘ ìˆ˜ë¥¼ ì½ì–´ ê·¸ í•©ì„ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ë¥¼ êµ¬í˜„í•˜ì‹œì˜¤.
 
 #include <iostream>
 #include <fstream>
@@ -13,12 +12,8 @@ void coutSum(string fName) {
 		string line;
 		
 		while (getline(input, line)) {
-			int cnt = 0, sum = 0;
-			// cnt°¡ 0ÀÏ ¶§´Â ÇØ´ç ÁÙÀÇ 1¹øÂ° ¼ö, 1ÀÏ ¶§´Â 2¹øÂ° ¼ö
-			// 1st number on that line when cnt is 0 and 2nd number on 1
-			string num[2] = { "", "" }; 
-			// num[0]¿¡´Â ÇØ´ç ÁÙÀÇ 1¹øÂ° ¼ö°¡, num[1]¿¡´Â 2¹øÂ° ¼ö°¡ ÀúÀåµÈ´Ù
-			// number [0] stores the first number of the line, and number [1] stores the second number
+			int cnt = 0, sum = 0;		// cntê°€ 0ì¼ ë•ŒëŠ” í•´ë‹¹ ì¤„ì˜ 1ë²ˆì§¸ ìˆ˜, 1ì¼ ë•ŒëŠ” 2ë²ˆì§¸ ìˆ˜
+			string num[2] = { "", "" };	// num[0]ì—ëŠ” í•´ë‹¹ ì¤„ì˜ 1ë²ˆì§¸ ìˆ˜ê°€, num[1]ì—ëŠ” 2ë²ˆì§¸ ìˆ˜ê°€ ì €ì¥ëœë‹¤
 
 			for (int i = 0; i < line.length(); i++) {
 				if (line[i] == ' ') {
@@ -26,24 +21,27 @@ void coutSum(string fName) {
 					continue;
 				}
 				num[cnt] += line[i]; 
-				// ¹®ÀÚ¿­ num[cnt]¿¡ ' ' ÀÌÀü±îÁöÀÇ ¼ö(¹®ÀÚ)µéÀ» ÀÌ¾îºÙÀÎ´Ù
-				// connect the number of characters before ' ' to string number [cnt]
+				// ë¬¸ìì—´ num[cnt]ì— ' ' ì´ì „ê¹Œì§€ì˜ ìˆ˜(ë¬¸ì)ë“¤ì„ ì´ì–´ë¶™ì¸ë‹¤
 			}
 			
 			for (int i = 0; i < 2; i++) {
 				int n = 0;
 
-				// ¹®ÀÚ ÇüÅÂ·Î ÀúÀåµÈ ¼ö¸¦ Á¤¼ö ÇüÅÂ·Î º¯È¯ÇÑ´Ù
-				// convert the number stored in a letter into an integer form
+				// ë¬¸ì í˜•íƒœë¡œ ì €ì¥ëœ ìˆ˜ë¥¼ ì •ìˆ˜ í˜•íƒœë¡œ ë³€í™˜í•œë‹¤
 				for (int j = 0; j < num[i].length(); j++) {
 					n = n * 10 + (num[i][j] - '0');
+					/*
+						i\j  0  1	
+						 0	 1	4
+						 1	 5	5
+					*/
 				}
 				sum += n;
 			}
 			cout << num[0] << " + " << num[1] << " = " << sum << endl;
 		}
 	}
-	else cout << "ÆÄÀÏÀ» ÀĞÁö ¸øÇß½À´Ï´Ù."; 
+	else cout << "íŒŒì¼ì„ ì½ì§€ ëª»í–ˆìŠµë‹ˆë‹¤."; 
 
 	input.close();
 }
@@ -56,12 +54,15 @@ int main() {
 }
 
 /*
-	16Çà
-	string num1, num2 ÁÙÁÙÀÌ ¼±¾ğÇÏ´Â °Í º¸´Ü,
-	string num[] ¹è¿­·Î ¼±¾ğÇØÁÖ´Â °ÍÀÌ ÄÁÆ®·ÑÇÏ±â¿¡ ´õ ÁÁ´Ù
+	<16í–‰>
+	string num1, num2 -> ì´ëŸ° ì‹ìœ¼ë¡œ ì¤„ì¤„ì´ ì„ ì–¸í•˜ëŠ” ê²ƒ ë³´ë‹¨,
+	string num[] -> ë°°ì—´ë¡œ ì„ ì–¸í•´ì£¼ëŠ” ê²ƒì´ ì»¨íŠ¸ë¡¤í•˜ëŠ”ë° ë” í¸ë¦¬í•˜ë‹¤
 
+	<23í–‰>
 	string s = "";
 	s += "a";
 	s += "bcd";
-	ÀÌ·¸°Ô stringÀº ¹®ÀÚ¿­ ÀÌ¾îºÙÀÌ±â°¡ °¡´ÉÇÏ´Ù
+	cout << s;	// abcd
+
+	-> ì´ëŸ° ì‹ìœ¼ë¡œ stringì€ ë¬¸ìì—´ ì´ì–´ë¶™ì´ê¸°ë¥¼ í•  ìˆ˜ ìˆë‹¤
 */
