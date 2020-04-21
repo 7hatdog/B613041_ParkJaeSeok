@@ -41,7 +41,7 @@ void coutSum(string fName) {
 			cout << num[0] << " + " << num[1] << " = " << sum << endl;
 		}
 	}
-	else cout << "파일을 읽지 못했습니다."; 
+	else { cerr << "파일을 읽지 못했습니다" << endl; return -1; }
 
 	input.close();
 }
