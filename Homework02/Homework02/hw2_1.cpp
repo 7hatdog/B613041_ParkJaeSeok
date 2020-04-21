@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     // ※ 파일(hw2_1.txt) 읽기
-    ifstream input("test2_1.txt", ios::in | ios::binary);
+    ifstream input("hw2_1.txt", ios::in | ios::binary);
     string str;
 
     // 1. 위치 지정자(커서)를 파일 끝으로 옮긴다
