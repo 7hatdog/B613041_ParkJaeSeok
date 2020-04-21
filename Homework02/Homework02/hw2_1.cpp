@@ -1,39 +1,31 @@
-// 1. read() / write() ·Î ÆÄÀÏÀ» º¹»çÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À
-// 1. Create a program to copy files to read() / write()
+// 1. read() / write() ë¡œ íŒŒì¼ì„ ë³µì‚¬í•˜ëŠ” í”„ë¡œê·¸ë¨ì„ ì‘ì„±í•˜ì‹œì˜¤
 
 #include <fstream>
 #include <string>
 using namespace std;
 
 int main() {
-    // ¡Ø ÆÄÀÏ(hw2_1.txt) ÀĞ±â
-    // ¡Ø Read file (hw2_1.txt)
+    // â€» íŒŒì¼(hw2_1.txt) ì½ê¸°
     ifstream input("test2_1.txt", ios::in | ios::binary);
     string str;
 
-    // 1. À§Ä¡ ÁöÁ¤ÀÚ(Ä¿¼­)¸¦ ÆÄÀÏ ³¡À¸·Î ¿Å±ä´Ù
-    // 1. Move the cursor to the end of the file
+    // 1. ìœ„ì¹˜ ì§€ì •ì(ì»¤ì„œ)ë¥¼ íŒŒì¼ ëìœ¼ë¡œ ì˜®ê¸´ë‹¤
     input.seekg(0, ios::end);
 
-    // 2. ÆÄÀÏ ³¡ÀÇ À§Ä¡¸¦ ÀĞ´Â´Ù 
-    // 2. Read the location at the end of the file
-    int size = input.tellg(); // size : ÆÄÀÏÀÇ Å©±â
+    // 2. íŒŒì¼ ëì˜ ìœ„ì¹˜ë¥¼ ì½ëŠ”ë‹¤ 
+    int size = input.tellg(); // size : íŒŒì¼ì˜ í¬ê¸°
 
-    // 3. strÀÇ size¸¦ ÆÄÀÏÀÇ Å©±â¸¸Å­ ÇÒ´çÇÑ´Ù
-    // 3. Allocate the size of the str by the size of the file
+    // 3. strì˜ sizeë¥¼ íŒŒì¼ì˜ í¬ê¸°ë§Œí¼ í• ë‹¹í•œë‹¤
     str.resize(size);
 
-    // 4. À§Ä¡ ÁöÁ¤ÀÚ¸¦ ´Ù½Ã Ã³À½À¸·Î ÃÊ±âÈ­ÇÑ´Ù
-    // 4. Initialize the location designator for the first time
+    // 4. ìœ„ì¹˜ ì§€ì •ìë¥¼ ë‹¤ì‹œ ì²˜ìŒìœ¼ë¡œ ì´ˆê¸°í™”í•œë‹¤
     input.seekg(0, ios::beg);
 
-    // 5. ÆÄÀÏÀÇ (ÀüÃ¼)³»¿ëÀ» str¿¡ ÀĞ´Â´Ù
-    // 5. Read the (full) contents of the file to the str
+    // 5. íŒŒì¼ì˜ (ì „ì²´)ë‚´ìš©ì„ strì— ì½ëŠ”ë‹¤
     input.read(&str[0], size);
-    input.close(); // ÆÄÀÏ ´İ±â
+    input.close(); // íŒŒì¼ ë‹«ê¸°
 
-    // ¡Ø ÆÄÀÏ(copy.txt) º¹»ç
-    // ¡Ø Copy file (hw2_1.txt)
+    // â€» íŒŒì¼(copy.txt) ë³µì‚¬
     ofstream output("copy.txt", ios::out | ios::binary);
 
     output.write(&str[0], size);
