@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-int coutSum(string fName) { // 파일을 읽지 못했을 경우, -1을 반환하기 위해서 int형으로 선언했습니다
+void coutSum(string fName) { 
 	ifstream input(fName);
 
 	if (input.is_open()) {
@@ -41,7 +41,7 @@ int coutSum(string fName) { // 파일을 읽지 못했을 경우, -1을 반환�
 			cout << num[0] << " + " << num[1] << " = " << sum << endl;
 		}
 	}
-	else { cerr << "파일을 읽지 못했습니다" << endl; return -1; }
+	else { cerr << "파일을 읽지 못했습니다" << endl; }
 
 	input.close();
 }
