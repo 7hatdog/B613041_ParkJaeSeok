@@ -55,14 +55,15 @@ int main() {
 
 /*
 	<16행>
-	string num1, num2 -> 이런 식으로 줄줄이 선언하는 것 보단,
-	string num[] -> 배열로 선언해주는 것이 컨트롤하기에 더 편리하다
+	string num1, num2 
+	-> 이런 식으로 줄줄이 선언하는 것 보다는,
+	string num[] 
+	-> 배열로 선언해주는 것이 컨트롤하기에 더 편리하다
 
 	<23행>
 	string s = "";
 	s += "a";
 	s += "bcd";
 	cout << s;	// abcd
-
 	-> 이런 식으로 string은 문자열 이어붙이기를 할 수 있다
 */
