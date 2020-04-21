@@ -7,6 +7,7 @@ using namespace std;
 int main() {
     // ※ 파일(test2_1.txt) 읽기
     ifstream input("test2_1.txt", ios::in | ios::binary);
+    if (!input.is_open()) { cerr << "파일을 읽지 못했습니다" << endl; return -1; }
     string str;
 
     // 1. 위치 지정자(커서)를 파일 끝으로 옮긴다
