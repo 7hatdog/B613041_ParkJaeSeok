@@ -1,10 +1,21 @@
 // 1. read() / write() 로 파일을 복사하는 프로그램을 작성하시오
 
+#include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
 
 int main() {
+	// ※ 파일 (test2_1.txt) 쓰기
+	ofstream writeFile;
+	writeFile.open("test2_1.txt");
+	
+	if(writeFile.is_open()) {
+		writeFile << "B613041" << endl;
+		writeFile << "ParkJaeSeok" << endl;
+		
+	} else { cerr << "파일 쓰기 실패" << endl; return -1; }
+	
     // ※ 파일(test2_1.txt) 읽기
     ifstream input("test2_1.txt", ios::in | ios::binary);
     if (!input.is_open()) { cerr << "파일을 읽지 못했습니다" << endl; return -1; }
