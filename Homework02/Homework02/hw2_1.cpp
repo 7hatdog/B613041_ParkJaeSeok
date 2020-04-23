@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    // ※ 파일 (test2_1.txt) 쓰기
+    // ※ 파일(test2_1.txt) 쓰기
     ofstream writeFile;
     writeFile.open("test2_1.txt");
 	
