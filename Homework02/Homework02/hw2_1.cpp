@@ -6,15 +6,15 @@
 using namespace std;
 
 int main() {
-	// ※ 파일 (test2_1.txt) 쓰기
-	ofstream writeFile;
-	writeFile.open("test2_1.txt");
+    // ※ 파일 (test2_1.txt) 쓰기
+    ofstream writeFile;
+    writeFile.open("test2_1.txt");
 	
-	if(writeFile.is_open()) {
-		writeFile << "B613041" << endl;
-		writeFile << "ParkJaeSeok" << endl;
+    if(writeFile.is_open()) {
+        writeFile << "B613041" << endl;
+	writeFile << "ParkJaeSeok" << endl;
 		
-	} else { cerr << "파일 쓰기 실패" << endl; return -1; }
+    } else { cerr << "파일 쓰기 실패" << endl; return -1; }
 	
     // ※ 파일(test2_1.txt) 읽기
     ifstream input("test2_1.txt", ios::in | ios::binary);
