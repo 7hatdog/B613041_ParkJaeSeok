@@ -114,15 +114,15 @@ public:
 	}
 };
 
-// Polygon 클래스가 온전치 못합니다...
+// Polygon 클래스가 온전치 못한 상태입니다...
 class Polygon {
 protected:
-	int numPolygons; // numPolygons를 어떻게 다뤄야할 지 모르겠습니다...
+	int numPolygons; // numPolygons를 어떻게 다뤄야할 지 모르겠습니다... (막힘 1)
 	PointArray points;
 public:
 	Polygon() {
 		numPolygons = 0;
-		// PointArray points는 일단 생략했습니다...
+		// PointArray points는 일단 생략했습니다... (막힘 2)
 	}
 	Polygon(PointArray& pa) {
 		numPolygons = pa.getSize();
@@ -133,8 +133,8 @@ public:
 		points = pa;
 	}
 	// virtual double area() const = 0; 
-	// 다각형의 넓이를 구하는 함수의 구현도 과제에 포함인가요...?
- 	int getNumPolygons() { return numPolygons; }
+	// 다각형의 넓이를 구현하는 것도 과제에 포함되는건가요..? (막힘 3)
+	int getNumPolygons() { return numPolygons; }
 	int getNumSides() { return points.getSize(); }
 	PointArray* getPoints() { return &points; }
 	~Polygon() { --numPolygons; }
