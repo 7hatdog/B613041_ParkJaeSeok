@@ -1,10 +1,10 @@
 /*
-	°úÁ¦ 3
+	ê³¼ì œ 3
 
-	RectangleÀº ¿ÞÂÊ À§ÀÇ ÁÂÇ¥-¿À¸¥ÂÊ ¾Æ·¡ÀÇ ÁÂÇ¥,
-	È¤Àº ¿ÞÂÊ ¾Æ·¡ÀÇ ÁÂÇ¥-¿À¸¥ÂÊ À§ÀÇ ÁÂÇ¥¸¦ ÀÎ¼ö·Î °¡Áø´Ù.
-	RectangleÀÇ ³ÐÀÌ¸¦ ±¸ÇÏ´Â area() ÇÔ¼ö, Rectangle class°¡
-	Àß µ¿ÀÛÇÔÀ» º¸¿©ÁÖ´Â main()¸¦ Æ÷ÇÔÇÑ Rectangle.cpp¸¦ ÀÛ¼ºÇÏ¿© Á¦ÃâÇÏ¶ó
+	Rectangleì€ ì™¼ìª½ ìœ„ì˜ ì¢Œí‘œ-ì˜¤ë¥¸ìª½ ì•„ëž˜ì˜ ì¢Œí‘œ,
+	í˜¹ì€ ì™¼ìª½ ì•„ëž˜ì˜ ì¢Œí‘œ-ì˜¤ë¥¸ìª½ ìœ„ì˜ ì¢Œí‘œë¥¼ ì¸ìˆ˜ë¡œ ê°€ì§„ë‹¤.
+	Rectangleì˜ ë„“ì´ë¥¼ êµ¬í•˜ëŠ” area() í•¨ìˆ˜, Rectangle classê°€
+	ìž˜ ë™ìž‘í•¨ì„ ë³´ì—¬ì£¼ëŠ” main()ë¥¼ í¬í•¨í•œ Rectangle.cppë¥¼ ìž‘ì„±í•˜ì—¬ ì œì¶œí•˜ë¼
 */
 
 #include <iostream>
@@ -72,7 +72,7 @@ public:
 
 	void insert(int pos, Point& p) {
 		if (pos > size || pos < 0) {
-			cerr << "¹è¿­ ¹üÀ§ ¹ÛÀÇ position°ª ÀÔ´Ï´Ù." << endl;
+			cerr << "ë°°ì—´ ë²”ìœ„ ë°–ì˜ positionê°’ ìž…ë‹ˆë‹¤." << endl;
 		}
 		else {
 			Point* tmp = new Point[size - pos];
@@ -90,7 +90,7 @@ public:
 
 	void remove(int pos) {
 		if (pos >= size || pos < 0) {
-			cerr << "¹è¿­ ¹üÀ§ ¹ÛÀÇ position°ª ÀÔ´Ï´Ù." << endl;
+			cerr << "ë°°ì—´ ë²”ìœ„ ë°–ì˜ positionê°’ ìž…ë‹ˆë‹¤." << endl;
 		}
 		else {
 			Point* tmp = new Point[size - pos];
@@ -114,15 +114,15 @@ public:
 	}
 };
 
-// Polygon Å¬·¡½º°¡ ¿ÂÀüÄ¡ ¸øÇÔ...
+// Polygon í´ëž˜ìŠ¤ê°€ ì˜¨ì „ì¹˜ ëª»í•¨...
 class Polygon {
 protected:
-	int numPolygons; // numPolygons¸¦ ¾î¶»°Ô ´Ù·ï¾ßÇÏÁö...
+	int numPolygons; // numPolygonsë¥¼ ì–´ë–»ê²Œ ë‹¤ë¤„ì•¼í•  ì§€ ëª¨ë¥´ê² ìŒ...
 	PointArray points;
 public:
 	Polygon() {
 		numPolygons = 0;
-		// PointArray points¸¦ ¾î¶»°Ô ÃÊ±âÈ­ÇØ¾ßÇÏ³ª...
+		// PointArray pointsëŠ” ì¼ë‹¨ ìƒëžµí–ˆìŠµë‹ˆë‹¤...
 	}
 	Polygon(PointArray& pa) {
 		numPolygons = pa.getSize();
@@ -133,7 +133,7 @@ public:
 		points = pa;
 	}
 	// virtual double area() const = 0; 
-	// ´Ù°¢ÇüÀÇ ³ÐÀÌ...?
+	// ë‹¤ê°í˜•ì˜ ë„“ì´...?
  	int getNumPolygons() { return numPolygons; }
 	int getNumSides() { return points.getSize(); }
 	PointArray* getPoints() { return &points; }
@@ -194,14 +194,14 @@ int main() {
 	cout << "p2 : " << "( " << pArr.get(1).getX() << ", " << pArr.get(1).getY() << " )" << endl;
 
 	// remove
-	cout << "remove ÀÌÀü pArr Å©±â : " << pArr.getSize() << " -> ";
+	cout << "remove ì´ì „ pArr í¬ê¸° : " << pArr.getSize() << " -> ";
 	pArr.remove(1);
-	cout << "remove ÀÌÈÄ pArr Å©±â : " << pArr.getSize() << endl;
+	cout << "remove ì´í›„ pArr í¬ê¸° : " << pArr.getSize() << endl;
 
-	// p1, p2¸¦ ¿ÞÂÊ ¹× ¿À¸¥ÂÊ ÁÂÇ¥·Î ÇÏ´Â »ç°¢Çü recÀÇ ³ÐÀÌ
+	// p1, p2ë¥¼ ì™¼ìª½ ë° ì˜¤ë¥¸ìª½ ì¢Œí‘œë¡œ í•˜ëŠ” ì‚¬ê°í˜• recì˜ ë„“ì´
 	Rectangle rec = Rectangle(p1, p2);
-	cout << "ÁÂÇ¥ " << "( " << p1.getX() << ", " << p1.getY() << " )" << " , "
-		<< "( " << p2.getX() << ", " << p2.getY() << " ) ÀÇ »ç°¢Çü ³ÐÀÌ = " << rec.area() << endl;
+	cout << "ì¢Œí‘œ " << "( " << p1.getX() << ", " << p1.getY() << " )" << " , "
+		<< "( " << p2.getX() << ", " << p2.getY() << " ) ì˜ ì‚¬ê°í˜• ë„“ì´ = " << rec.area() << endl;
 
 	return 0;
 }
