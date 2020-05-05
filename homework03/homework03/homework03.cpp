@@ -132,8 +132,9 @@ public:
 		numPolygons = numPoints;
 		points = pa;
 	}
-	///virtual double area() const = 0; 
-	int getNumPolygons() { return numPolygons; }
+	// virtual double area() const = 0; 
+	// 다각형의 넓이...?
+ 	int getNumPolygons() { return numPolygons; }
 	int getNumSides() { return points.getSize(); }
 	PointArray* getPoints() { return &points; }
 	~Polygon() { --numPolygons; }
