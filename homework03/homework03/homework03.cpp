@@ -1,5 +1,5 @@
 /*
-	과제 3
+	< 과제 3 >
 
 	Rectangle은 왼쪽 위의 좌표-오른쪽 아래의 좌표,
 	혹은 왼쪽 아래의 좌표-오른쪽 위의 좌표를 인수로 가진다.
@@ -14,21 +14,11 @@ class Point {
 	int x, y;
 
 public:
-	Point(int xx = 0, int yy = 0) {
-		x = xx; y = yy;
-	}
-	int getX() {
-		return x;
-	}
-	int getY() {
-		return y;
-	}
-	void setX(int xx) {
-		x = xx;
-	}
-	void setY(int yy) {
-		y = yy;
-	}
+	Point(int xx = 0, int yy = 0) { x = xx; y = yy; }
+	int getX() const { return x; }
+	int getY() const { return y; }
+	void setX(const int xx) { x = xx; }
+	void setY(const int yy) { y = yy; }
 };
 
 class PointArray {
@@ -51,26 +41,31 @@ public:
 		points = new Point[size];
 	}
 
-	PointArray(Point pts[], int pArraySize) {
+	PointArray(Point pts[], const int pArraySize) {
 		size = pArraySize;
 		points = pts;
 	}
+
+	PointArray(const PointArray& pv) {
+		size = pv.size;
+		points = pv.points;
+	}
+
+	~PointArray() { delete points; }
 
 	void clear() {
 		size = 0;
 		points = new Point[size];
 	}
 
-	int getSize() {
-		return size;
-	}
+	int getSize() const { return size; }
 
-	void push_back(Point& p) {
+	void push_back(const Point& p) {
 		resize(++size);
 		points[size - 1] = p;
 	}
 
-	void insert(int pos, Point& p) {
+	void insert(const int pos, const Point& p) {
 		if (pos > size || pos < 0) {
 			cerr << "배열 범위 밖의 position값 입니다." << endl;
 		}
@@ -88,7 +83,7 @@ public:
 		}
 	}
 
-	void remove(int pos) {
+	void remove(const int pos) {
 		if (pos >= size || pos < 0) {
 			cerr << "배열 범위 밖의 position값 입니다." << endl;
 		}
@@ -105,35 +100,27 @@ public:
 		}
 	}
 
-	Point get(int pos) {
-		return this->points[pos];
-	}
-
-	const Point get(const int pos) const {
-		return this->points[pos];
-	}
+	Point get(const int pos) { return this->points[pos]; }
+	const Point get(const int pos) const { return this->points[pos]; }
 };
 
-// Polygon 클래스가 온전치 못한 상태입니다...
 class Polygon {
 protected:
-	int numPolygons; // numPolygons를 어떻게 다뤄야할 지 모르겠습니다... (막힘 1)
+	int numPolygons;
 	PointArray points;
 public:
 	Polygon() {
 		numPolygons = 0;
-		// PointArray points는 일단 생략했습니다... (막힘 2)
 	}
-	Polygon(PointArray& pa) {
+	Polygon(const PointArray& pa) {
 		numPolygons = pa.getSize();
 		points = pa;
 	}
-	Polygon(PointArray& pa, int numPoints) {
+	Polygon(const PointArray& pa, const int numPoints) {
 		numPolygons = numPoints;
 		points = pa;
 	}
 	// virtual double area() const = 0; 
-	// 다각형의 넓이를 구현하는 것도 과제에 포함되는건가요..? (막힘 3)
 	int getNumPolygons() { return numPolygons; }
 	int getNumSides() { return points.getSize(); }
 	PointArray* getPoints() { return &points; }
@@ -144,7 +131,7 @@ class Rectangle : public Polygon {
 	Point left, right;
 
 public:
-	Rectangle(Point& a, Point& b) {
+	Rectangle(const Point& a, const Point& b) {
 		if (a.getX() < b.getX()) {
 			left = a;
 			right = b;
@@ -154,7 +141,7 @@ public:
 			right = a;
 		}
 	}
-	Rectangle(int a, int b, int c, int d) {
+	Rectangle(const int a, const int b, const int c, const int d) {
 		if (a < c) {
 			left.setX(a);
 			left.setY(b);
@@ -182,7 +169,7 @@ public:
 
 int main() {
 	Point p1 = Point(1, 2);
-	Point p2 = Point(9, 10);
+	Point p2 = Point(3, 4);
 	PointArray pArr = PointArray();
 
 	// push_back
@@ -193,15 +180,10 @@ int main() {
 	pArr.insert(1, p2);
 	cout << "p2 : " << "( " << pArr.get(1).getX() << ", " << pArr.get(1).getY() << " )" << endl;
 
-	// remove
-	cout << "remove 이전 pArr 크기 : " << pArr.getSize() << " -> ";
-	pArr.remove(1);
-	cout << "remove 이후 pArr 크기 : " << pArr.getSize() << endl;
-
-	// p1, p2를 왼쪽 및 오른쪽 좌표로 하는 사각형 rec의 넓이
+	// area
 	Rectangle rec = Rectangle(p1, p2);
-	cout << "좌표 " << "( " << p1.getX() << ", " << p1.getY() << " )" << " , "
-		<< "( " << p2.getX() << ", " << p2.getY() << " ) 의 사각형 넓이 = " << rec.area() << endl;
+	cout << "rectangle " << "( " << p1.getX() << ", " << p1.getY() << " )" << " , "
+		<< "( " << p2.getX() << ", " << p2.getY() << " ) area is " << rec.area() << endl;
 
 	return 0;
 }
